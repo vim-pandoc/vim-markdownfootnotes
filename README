@@ -1,0 +1,65 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=431
+
+Inspired by Emmanuel Touzery tip:
+" http://vim.sourceforge.net/tip_view.php?tip_id=332 
+" and discussion below (thanks to Luc for pluginization hints) 
+" I added functions and turned it into vim script.
+
+
+" Commands:
+" <Leader>f (in insert mode) - inserts footnotemark, opens at bottom window where
+"     footnotemark is also inserted and you are ready to type in your
+"     footnotetext.
+" <Leader>r (in insert mode) - closes footnote window and returns to the text in
+"     proper place. 
+"
+" You can change them by placing in your vimrc:
+"  imap your_map <Plug>AddVimFootnote
+"  imap your_map <Plug>ReturnFromFootnote
+"
+"
+"    Footnotes are placed at the end of the file but above signature delimiter
+"    (is one exists). 
+"
+" Settings:
+" g:vimfootnotetype - possible values:
+" 	arabic (default) - [1] [2] [3] ...
+" 	alpha  - [a] [b] ... [z] [aa] [bb] ... [zz] [a] ...
+"   Alpha  - as above but uppercase [A] ...
+"   star   - [*] [**] [***] ...	
+"
+" Additional commands:
+" FootnoteNumber:
+" 	You can change current footnote number (one obligatory argument)
+"   :FootnoteNumber 5	
+" FootnoteNumberRestore:
+"	You can restore old footnote number  
+"	:FootnoteNumberRestore	
+" FootnoteUndo: 
+"	Decrease footnote counter by 1
+"	:FootnoteUndo	 
+" FootnoteMeta:
+" 	Change type of the footnotes and restart counter (1, a, A, *)
+" 	:FootnoteMeta
+" 		If your previous footnote type was alpha, Alpha or star new type will
+" 		be arabic.
+" 		If your previous footnote type was arabic new type will be alpha.
+" 	:FootnoteMeta name_of_the_type
+" 		Change footnote type to name_of_the_type. If name_of_the_type is the
+" 		same as	your current footnote type nothing would be changed.
+" FootnoteRestore:
+" 	Restore previous footnote type and counter. Unfortunately there is no easy
+" 	way to sort footnotes at the end of file without handmade :!sort on marked
+" 	lines (it doesn't work for 'star' type).
+" 	:FootnoteRestore	
+"
+" For easier work with this commands I would suggest place this lines in your
+" vimrc (they offer very nice competion of Vim commands):	
+"	set laststatus=2
+"	set wildmode=longest,list
+"	set wildmenu
+"
+" And/or map :FootnoteComs for something you like.
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
