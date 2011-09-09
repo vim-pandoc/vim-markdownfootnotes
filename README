@@ -1,4 +1,26 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=431
+## VimFootnotes for Markdown
+
+This fork is a slight tweak of the venerable [vimfootnotes](http://www.vim.org/scripts/script.php?script_id=431), for use with extended markdown.
+
+The original script inserts footnotes that look like this:
+
+~~~
+Here is some text.[1]
+
+[1] Here is a note.
+~~~
+
+The new script inserts footnotes in the widely supported extended markdown syntax,
+
+~~~
+Here is some text.[^1]
+
+[^1]: Here is a note.
+~~~
+
+No other changes have been made. Original instructions below.
+
+* * * * *
 
 Inspired by Emmanuel Touzery tip:
 " http://vim.sourceforge.net/tip_view.php?tip_id=332 
