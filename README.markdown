@@ -21,7 +21,7 @@ Here is some text.[^1]
 No other changes have been made. Original instructions below.
 
 * * * * *
-
+~~~
 Inspired by Emmanuel Touzery tip:
 " http://vim.sourceforge.net/tip_view.php?tip_id=332 
 " and discussion below (thanks to Luc for pluginization hints) 
@@ -84,4 +84,4 @@ Inspired by Emmanuel Touzery tip:
 " And/or map :FootnoteComs for something you like.
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
-
+~~~
