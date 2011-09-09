@@ -252,13 +252,13 @@ function! s:VimFootnotes(appendcmd)
 		let g:vimfootnotemark = <sid>VimFootnoteType(g:vimfootnotenumber)
 		let cr = "\<cr>"
 	endif
-	exe "normal ".a:appendcmd."[".g:vimfootnotemark."]\<esc>" 
+	exe "normal ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>" 
 	:below 4split
 	normal G
 	if search("^-- $", "bW")
-		exe "normal O".cr."[".g:vimfootnotemark."] "
+		exe "normal O".cr."[^".g:vimfootnotemark."]: "
 	else
-		exe "normal o".cr."[".g:vimfootnotemark."] "
+		exe "normal o".cr."[^".g:vimfootnotemark."]: "
 	endif
 	startinsert!
 endfunction
