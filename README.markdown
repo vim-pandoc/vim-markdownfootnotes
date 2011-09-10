@@ -18,70 +18,96 @@ Here is some text.[^1]
 [^1]: Here is a note.
 ~~~
 
-No other changes have been made. Original instructions below.
+No other changes have been made. 
 
 * * * * *
 ~~~
-Inspired by Emmanuel Touzery tip:
-" http://vim.sourceforge.net/tip_view.php?tip_id=332 
-" and discussion below (thanks to Luc for pluginization hints) 
-" I added functions and turned it into vim script.
-
-
-" Commands:
-" <Leader>f (in insert mode) - inserts footnotemark, opens at bottom window where
-"     footnotemark is also inserted and you are ready to type in your
-"     footnotetext.
-" <Leader>r (in insert mode) - closes footnote window and returns to the text in
-"     proper place. 
+" Maintainer: David Sanson <dsanson@gmail.com>
+" Description: Extended Markdown Footnotes in Vim
+" Version: 0.1
+" URL: https://github.com/vim-pandoc/vim-markdownfootnotes
 "
-" You can change them by placing in your vimrc:
-"  imap your_map <Plug>AddVimFootnote
-"  imap your_map <Plug>ReturnFromFootnote
+" I've taken the original and modified the output to fit the widely 
+" supported extended markdown format for footnotes.[^note]
 "
+" [^note]: Like this.
 "
-"    Footnotes are placed at the end of the file but above signature delimiter
-"    (is one exists). 
+" The original script either puts notes at the end, or before your
+" email sig line (i.e., if there is a line that consists of two dashes,
+" it puts the notes before that line). This version just puts them at 
+" the end.
+"
+" Based On:
+"   VimFootnotes
+"   Author:	Mikolaj Machowski <mikmach@wp.pl>
+"   Version:	0.6
+"   Description:	Footnotes in Vim
+"   Installation: See below
+"   Last Change: pon wrz 30 09:00  2002 C
+"   URL: http://www.vim.org/scripts/script.php?script_id=431
+"   Help Part:
+"     Inspired by Emmanuel Touzery tip:
+"     http://vim.sourceforge.net/tip_view.php?tip_id=332 
+"     and discussion below (thanks to Luc for pluginization hints) 
+"     I added functions and turned it into vim script.
+"
+" Installation: Drop it to your plugin directory but you can declare your
+"      favorite types of footnotes in your ftplugins.
 "
 " Settings:
-" g:vimfootnotetype - possible values:
+"
+" By default, footnote ids are arabic numerals. You can change this by
+" setting b:vimfootnotetype,
+"
 " 	arabic (default) - [1] [2] [3] ...
 " 	alpha  - [a] [b] ... [z] [aa] [bb] ... [zz] [a] ...
 "   Alpha  - as above but uppercase [A] ...
+"   roman  - [i] [ii] [iii] displayed properly up to 89
+"   Roman  - as above but uppercase [I] ... 
 "   star   - [*] [**] [***] ...	
 "
-" Additional commands:
-" FootnoteNumber:
-" 	You can change current footnote number (one obligatory argument)
-"   :FootnoteNumber 5	
-" FootnoteNumberRestore:
-"	You can restore old footnote number  
-"	:FootnoteNumberRestore	
-" FootnoteUndo: 
-"	Decrease footnote counter by 1
-"	:FootnoteUndo	 
-" FootnoteMeta:
-" 	Change type of the footnotes and restart counter (1, a, A, *)
-" 	:FootnoteMeta
-" 		If your previous footnote type was alpha, Alpha or star new type will
-" 		be arabic.
+" Commands:
+" 
+" Those mappings correspond to two commands that you can use in your own
+" mappings:
+"
+" AddVimFootnote
+"  ~  inserts footnotemark at cursor location, inserts footnotemark on new 
+"     line at end of file, opens a split window all ready for you to enter in
+"     the footnote.
+
+" ReturnFromFootnote
+"  ~  closes the split window and returns to the text in proper place. 
+"
+" These are mapped to <Leader>f and <Leader>r respectively.
+" 
+" FootnoteNumber
+"  ~  Change the current footnote number (one obligatory argument)
+"     :FootnoteNumber 5	
+"
+" FootnoteNumberRestore
+"  ~  Restore old footnote number  
+
+" FootnoteUndo
+"  ~  Decrease footnote counter by 1
+" 
+" FootnoteMeta
+"  ~  Change type of the footnotes and restart counter (1, a, A, i, I, *)
+" 	  :FootnoteMeta
+" 		If your previous footnote type was alpha, Alpha, roman, Roman or star
+" 		new type will be arabic.
 " 		If your previous footnote type was arabic new type will be alpha.
-" 	:FootnoteMeta name_of_the_type
+" 	  :FootnoteMeta name_of_the_type
 " 		Change footnote type to name_of_the_type. If name_of_the_type is the
 " 		same as	your current footnote type nothing would be changed.
-" FootnoteRestore:
-" 	Restore previous footnote type and counter. Unfortunately there is no easy
-" 	way to sort footnotes at the end of file without handmade :!sort on marked
-" 	lines (it doesn't work for 'star' type).
-" 	:FootnoteRestore	
-"
-" For easier work with this commands I would suggest place this lines in your
-" vimrc (they offer very nice competion of Vim commands):	
-"	set laststatus=2
-"	set wildmode=longest,list
-"	set wildmenu
-"
-" And/or map :FootnoteComs for something you like.
+" 		You can change your default type of footnote before inserting first
+" 		footnote.	
+" 
+" FootnoteRestore
+"  ~  Restore previous footnote type and counter. Unfortunately there is no easy
+" 	  way to sort footnotes at the end of file without handmade :!sort on marked
+" 	  lines (it doesn't work for 'star' type).
+" 	  :FootnoteRestore	
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
-~~~
+
