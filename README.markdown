@@ -18,7 +18,9 @@ Here is some text.[^1]
 [^1]: Here is a note.
 ~~~
 
-No other changes have been made. 
+The original script inserts footnotes at the end of the file **or**
+before your email sig line. The new script inserts all footnotes at the
+end of the file.
 
 * * * * *
 ~~~
