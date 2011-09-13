@@ -27,8 +27,7 @@
 "     and discussion below (thanks to Luc for pluginization hints) 
 "     I added functions and turned it into vim script.
 "
-" Installation: Drop it to your plugin directory but you can declare your
-"      favorite types of footnotes in your ftplugins.
+" Installation: Drop it to your plugin directory or use pathogen.
 "
 " Settings:
 "
