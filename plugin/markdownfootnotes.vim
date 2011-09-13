@@ -1,6 +1,6 @@
 " Maintainer: David Sanson <dsanson@gmail.com>
 " Description: Extended Markdown Footnotes in Vim
-" Version: 0.1
+" Version: 1.0
 " URL: https://github.com/vim-pandoc/vim-markdownfootnotes
 "
 " I've taken the original and modified the output to fit the widely 
