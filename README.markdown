@@ -5,8 +5,6 @@ with extended markdown.
 
 The original script inserts footnotes that look like this:
 
-  [vimfootnotes]: http://www.vim.org/scripts/script.php?script_id=431
-
 ~~~
 Here is some text.[1]
 
@@ -23,7 +21,7 @@ Here is some text.[^1]
 ~~~
 
 The original script inserts footnotes at the end of the file **or**
-before your email sig line. The new script inserts all footnotes at the
+before an email sig line, if any. The new script inserts all footnotes at the
 end of the file.
 
 The script defines two mappings, 
@@ -69,7 +67,7 @@ setting `b:vimfootnotetype`:
 `ReturnFromFootnote`
  :  closes the split window and returns to the text in proper place. 
 
-These are mapped to ``<Leader>f` and `<Leader>r` respectively.
+These are mapped to `<Leader>f` and `<Leader>r` respectively.
 
 `FootnoteNumber`
  :  Change the current footnote number (one obligatory argument)
@@ -85,9 +83,10 @@ These are mapped to ``<Leader>f` and `<Leader>r` respectively.
  :  Change type of the footnotes and restart counter (1, a, A, i, I, *)
  
 The `<footnotetype>` argument is optional. If omitted, and your previous
-footnote type was alpha, Alpha, roman, Roman or star, the new type will
-be arabic; if your previous footnote type was arabic, new type will be
-alpha.
+footnote type was not `arabic`, the new type will be `arabic`; if it was
+arabic, the new type will be `alpha`. If the new type is the same as the
+previous type, then the counter will not be restarted.
+
 
 `FootnoteRestore`
   : Restore previous footnote type and counter.
@@ -100,3 +99,5 @@ alpha.
     implemented. I suspect there are ways in which it could be
     refactored and streamlined.
 
+
+ [vimfootnotes]: http://www.vim.org/scripts/script.php?script_id=431
