@@ -106,24 +106,14 @@ endif
 
 " Mappings
 if !hasmapto('<Plug>AddVimFootnote', 'i') && mapcheck('<Leader>f', 'i') is# ''
-	imap <buffer> <Leader>f <Plug>AddVimFootnote
+  	inoreabbrev <buffer> [] <c-o>:exe "normal \<Plug>AddVimFootnote"<cr>
 endif
 if !hasmapto('<Plug>AddVimFootnote', 'n') && mapcheck('<Leader>f', 'n') is# ""
     nmap <buffer> <Leader>f <Plug>AddVimFootnote
 endif
 
-if !hasmapto('<Plug>ReturnFromFootnote', 'i') && mapcheck('<Leader>r', 'i') is# ''
-    imap <buffer> <Leader>r <Plug>ReturnFromFootnote
-endif
-if !hasmapto('<Plug>ReturnFromFootnote', 'n') && mapcheck('<Leader>r', 'n') is# ''
-    nmap <buffer> <Leader>r <Plug>ReturnFromFootnote
-endif
-
 nnoremap <buffer> <Plug>AddVimFootnote :<c-u>call markdownfootnotes#VimFootnotes('a')<CR>
 inoremap <buffer> <Plug>AddVimFootnote <C-O>:<c-u>call markdownfootnotes#VimFootnotes('a')<CR>
-
-inoremap <Plug>ReturnFromFootnote <C-O>:<c-u>q<CR><Right>
-nnoremap <Plug>ReturnFromFootnote :<c-u>q<CR><Right>
 
 " :Footnote commands
 command! -buffer -nargs=1 FootnoteNumber call markdownfootnotes#VimFootnoteNumber(<q-args>)
