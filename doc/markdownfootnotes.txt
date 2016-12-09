@@ -1,24 +1,8 @@
-## VimFootnotes for Markdown
+markdown-footnotes, add footnotes in markdown *markdown-footnotes* *footnotes*
 
-This fork is a slight tweak of the venerable [vimfootnotes][], for use with
-extended markdown( Whereas the original script inserts footnotes that look like
-this
-
-~~~
-Here is some text.[1]
-
-[1] Here is a note.
-~~~
-
-the new script inserts footnotes in the widely supported extended
-markdown syntax,
-
-~~~
-Here is some text.[^1]
-
-[^1]: Here is a note.
-~~~
-)
+===========================================================================
+0. Introduction ~
+                                          *markdown-footnotes-intro*
 
 To insert a footnote, hit `<Leader>f` in normal mode or type `[]`. Then
 
@@ -28,27 +12,9 @@ To insert a footnote, hit `<Leader>f` in normal mode or type `[]`. Then
 
 When done, type `ZZ` to close the split and return to the main text.
 
-![Screenshot](https://raw.github.com/vim-pandoc/vim-markdownfootnotes/master/footnotes.png)
-
-## Installation
-
-Drop `markdownfootnotes.vim` in your plugin directory.
-
-Or use [Pathogen](https://github.com/tpope/vim-pathogen).
-
-## Settings
-
-By default, footnote ids are arabic numerals. You can change this by
-setting `b:vimfootnotetype`:
-
-+	`arabic`: 1, 2, 3...
-+	`alpha`:  a, b, c, aa, bb..., zz, a...
-+   `Alpha`:  A, B, C, AA, BB..., ZZ, A...
-+   `roman`:  i, ii, iii... (displayed properly up to 89)
-+   `Roman`:  I, II, III...
-+   `star`:   \*, \*\*, \*\*\*...
-
-## Commands
+===========================================================================
+1. Commands ~
+                                    *markdown-footnotes-commands*
 
 `AddVimFootnote`
  :  inserts footnotemark at cursor location, inserts footnotemark on new
@@ -65,7 +31,7 @@ These are mapped to `<Leader>f` and `<Leader>r` respectively.
     :FootnoteNumber 5
 
 `FootnoteNumberRestore`
- :  Restore old footnote number  
+ :  Restore old footnote number
 
 `FootnoteUndo`
  :  Decrease footnote counter by 1
@@ -81,10 +47,19 @@ previous type, then the counter will not be restarted.
 
 `FootnoteRestore`
   : Restore previous footnote type and counter.
+<
+===========================================================================
+2. Config ~
+                                        *markdown-footnotes-config*
 
-## Todo
+By default, footnote ids are arabic numerals. You can change this by
+setting `b:vimfootnotetype` in ~/.vim/ftplugin/markdown.vim:
 
-1.  It would not be hard to add support for other plaintext footnote
-    formats, triggered by filetype.
++	`arabic`: 1, 2, 3...
++	`alpha`:  a, b, c, aa, bb..., zz, a...
++   `Alpha`:  A, B, C, AA, BB..., ZZ, A...
++   `roman`:  i, ii, iii... (displayed properly up to 89)
++   `Roman`:  I, II, III...
++   `star`:   \*, \*\*, \*\*\*...
 
- [vimfootnotes]: http://www.vim.org/scripts/script.php?script_id=431
+vim:tw=78:ts=2:sts=2:sw=2:ft=help:norl
