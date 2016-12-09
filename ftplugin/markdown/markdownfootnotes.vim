@@ -115,17 +115,17 @@ if !hasmapto('<Plug>ReturnFromFootnote', 'n')
     nmap <Leader>r <Plug>ReturnFromFootnote
 endif
 
-nnoremap <Plug>AddVimFootnote :call markdownfootnotes#VimFootnotes('a')<CR>
-inoremap <Plug>AddVimFootnote <C-O>:call markdownfootnotes#VimFootnotes('a')<CR>
+nnoremap <buffer> <Plug>AddVimFootnote :call markdownfootnotes#VimFootnotes('a')<CR>
+inoremap <buffer> <Plug>AddVimFootnote <C-O>:call markdownfootnotes#VimFootnotes('a')<CR>
 
 inoremap <Plug>ReturnFromFootnote <C-O>:q<CR><Right>
 noremap <Plug>ReturnFromFootnote :q<CR><Right>
 
 " :Footnote commands
-command! -nargs=1 FootnoteNumber call markdownfootnotes#VimFootnoteNumber(<q-args>)
-command! -nargs=0 FootnoteNumberRestore call markdownfootnotes#VimFootnoteNumberRestore()
-command! -nargs=0 FootnoteUndo let g:vimfootnotenumber = g:vimfootnotenumber - 1
-command! -nargs=? FootnoteMeta call markdownfootnotes#VimFootnoteMeta(<f-args>)
-command! -nargs=0 FootnoteRestore call markdownfootnotes#VimFootnoteRestore()
+command! -buffer -nargs=1 FootnoteNumber call markdownfootnotes#VimFootnoteNumber(<q-args>)
+command! -buffer -nargs=0 FootnoteNumberRestore call markdownfootnotes#VimFootnoteNumberRestore()
+command! -buffer -nargs=0 FootnoteUndo let g:vimfootnotenumber = g:vimfootnotenumber - 1
+command! -buffer -nargs=? FootnoteMeta call markdownfootnotes#VimFootnoteMeta(<f-args>)
+command! -buffer -nargs=0 FootnoteRestore call markdownfootnotes#VimFootnoteRestore()
 
 let &cpo = s:cpo_save
