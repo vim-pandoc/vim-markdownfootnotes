@@ -1,3 +1,9 @@
+# WARNING: git repository fsck issue 
+
+This repository has (for its entire lifetime, inherited from the two commits in [VimFootnotes](https://github.com/vim-scripts/VimFootnotes)) had an issue with malformed commits. If your git config has integrity checking turned on, it may be cloned with `git clone --config transfer.fsckobjects=false --config receive.fsckobjects=false --config fetch.fsckobjects=false <url>`. Per discussion in [issue #5](https://github.com/vim-pandoc/vim-markdownfootnotes/issues/5), it is planned to rebase the master branch of this repository to address this issue. This will unfortunately mean all forks and clones will need to be likewise rebased on the updated repository. This will not be done until at least 2019-04-14.
+
+----
+
 ## VimFootnotes for Markdown
 
 This fork is a slight tweak of the venerable [vimfootnotes][], for use
