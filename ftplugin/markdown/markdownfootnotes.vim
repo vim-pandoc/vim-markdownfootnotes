@@ -95,6 +95,7 @@ set cpo&vim
 if !exists("g:vimfootnotetype")
 	let g:vimfootnotetype = "arabic"
 endif
+
 if !exists("g:vimfootnotenumber")
 	let g:vimfootnotenumber = 0
 endif
@@ -254,20 +255,41 @@ function! s:VimFootnoteType(footnumber)
 endfunction
 
 function! s:VimFootnotes(appendcmd)
-	if (g:vimfootnotenumber != 0)
-		let g:vimfootnotenumber = g:vimfootnotenumber + 1
-		let g:vimfootnotemark = <sid>VimFootnoteType(g:vimfootnotenumber)
-		let cr = "\<cr>"
-	else
-		let g:vimfootnotenumber = 1
-		let g:vimfootnotemark = <sid>VimFootnoteType(g:vimfootnotenumber)
-		let cr = "\<cr>"
-	endif
-	exe "normal ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
-	:below 4split
-	normal G
-	exe "normal o".cr."[^".g:vimfootnotemark."]: "
-	startinsert!
+    " save current position
+    let s:cur_pos =  getpos(".")
+    " Define search pattern for footnote definitions
+    let l:pattern = '\v^\[\^(.+)\]:'
+    let l:flags = 'eW'
+    call cursor(1,1)
+    " get first match
+    let g:vimfootnotenumber = search(l:pattern, l:flags)
+    if (g:vimfootnotenumber != 0)
+        let l:temp = 1
+        " count subsequent matches
+        while search(l:pattern, l:flags) != 0
+            let l:temp += 1
+            if l:temp > 50
+                redraw | echohl ErrorMsg | echo "Trouble in paradise: the while loop did not work"
+                break
+            endif
+        endwhile
+        let g:vimfootnotenumber = l:temp + 1
+        " Return to position
+        call setpos(".", s:cur_pos)
+        let g:vimfootnotemark = <sid>VimFootnoteType(g:vimfootnotenumber)
+        let cr = "\<cr>"
+    else
+        let g:vimfootnotenumber = 1
+        " Return to position
+        call setpos(".", s:cur_pos)
+        let g:vimfootnotemark = <sid>VimFootnoteType(g:vimfootnotenumber)
+        let cr = "\<cr>"
+    endif
+    exe "normal ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
+    :below 4split
+    normal G
+    exe "normal o".cr."[^".g:vimfootnotemark."]: "
+    startinsert!
 endfunction
 
 let &cpo = s:cpo_save
