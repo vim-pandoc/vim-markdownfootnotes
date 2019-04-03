@@ -87,7 +87,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 if exists("b:loaded_footnote_vim") | finish | endif
-	let b:loaded_footnote_vim = 1
+let b:loaded_footnote_vim = 1
 
 let s:cpo_save = &cpo
 set cpo&vim
