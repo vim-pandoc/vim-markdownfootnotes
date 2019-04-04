@@ -4,13 +4,11 @@ markdown-footnotes, add footnotes in markdown *markdown-footnotes* *footnotes*
 0. Introduction ~
                                           *markdown-footnotes-intro*
 
-To insert a footnote, hit `<Leader>f` in normal mode or type `[]`. Then
-
-- A footnote mark will be inserted after the cursor,
-- A matching footnote mark will be inserted at the end of the file, and
-- a split window at the bottom will open, ready to edit the new footnote.
-
-When done, type `ZZ` to close the split and return to the main text.
+To insert a footnote, type `<Leader>f`. A footnote mark will be inserted
+after the cursor. A matching footnote mark will be inserted at the end
+of the file. A new buffer will open in a split window at the bottom of
+your screen, ready to edit the new footnote. When you are done, type
+`<Leader>r` to close the split and return to the main text.
 
 ===========================================================================
 1. Commands ~
