@@ -100,6 +100,10 @@ if !exists("g:vimfootnotenumber")
 	let g:vimfootnotenumber = 0
 endif
 
+if !exists("g:vimfootnotelinebreak")
+	let g:vimfootnotelinebreak = 1
+endif
+
 " Mappings
 if !hasmapto('<Plug>AddVimFootnote', 'i')
 	imap <buffer> <Leader>f <Plug>AddVimFootnote
