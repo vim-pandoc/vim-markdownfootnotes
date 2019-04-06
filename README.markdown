@@ -57,7 +57,7 @@ setting `b:vimfootnotetype`:
 +   `Roman`:  I, II, III...
 +   `star`:   \*, \*\*, \*\*\*...
 
-You can optionally disable line breaks before each footnote by setting `b:vimfootnotelinebreak = 0`.
+You can optionally disable line breaks before each footnote by setting `g:vimfootnotelinebreak = 0`.
 
 ## Commands
 
