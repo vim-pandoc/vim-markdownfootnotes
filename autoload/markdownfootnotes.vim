@@ -147,14 +147,14 @@ function! markdownfootnotes#VimFootnotes(appendcmd)
         " Return to position
         call setpos(".", s:cur_pos)
         let g:vimfootnotemark = markdownfootnotes#VimFootnoteType(g:vimfootnotenumber)
-        let cr = "\<cr>"
     else
         let g:vimfootnotenumber = 1
         " Return to position
         call setpos(".", s:cur_pos)
         let g:vimfootnotemark = markdownfootnotes#VimFootnoteType(g:vimfootnotenumber)
-        let cr = "\<cr>"
     endif
+    let cr = g:vimfootnotelinebreak ? "\<cr>" : ""
+
     exe "normal ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
     :below 4split
     normal G
