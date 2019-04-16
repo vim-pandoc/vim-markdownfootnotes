@@ -105,17 +105,17 @@ if !exists("g:vimfootnotelinebreak")
 endif
 
 " Mappings
-if !hasmapto('<Plug>AddVimFootnote', 'i')
+if !hasmapto('<Plug>AddVimFootnote', 'i') && mapcheck('<Leader>f', 'i') is# ''
 	imap <buffer> <Leader>f <Plug>AddVimFootnote
 endif
-if !hasmapto('<Plug>AddVimFootnote', 'n')
+if !hasmapto('<Plug>AddVimFootnote', 'n') && mapcheck('<Leader>f', 'n') is# ""
     nmap <buffer> <Leader>f <Plug>AddVimFootnote
 endif
 
-if !hasmapto('<Plug>ReturnFromFootnote', 'i')
+if !hasmapto('<Plug>ReturnFromFootnote', 'i') && mapcheck('<Leader>r', 'i') is# ''
     imap <buffer> <Leader>r <Plug>ReturnFromFootnote
 endif
-if !hasmapto('<Plug>ReturnFromFootnote', 'n')
+if !hasmapto('<Plug>ReturnFromFootnote', 'n') && mapcheck('<Leader>r', 'n') is# ''
     nmap <buffer> <Leader>r <Plug>ReturnFromFootnote
 endif
 
