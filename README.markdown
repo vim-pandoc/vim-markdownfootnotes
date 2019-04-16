@@ -1,6 +1,10 @@
-# WARNING: git repository fsck issue 
+# WARNING: git repository rebased to fix fsck issue
 
-This repository has (for its entire lifetime, inherited from the two commits in [VimFootnotes](https://github.com/vim-scripts/VimFootnotes)) had an issue with malformed commits. If your git config has integrity checking turned on, it may be cloned with `git clone --config transfer.fsckobjects=false --config receive.fsckobjects=false --config fetch.fsckobjects=false <url>`. Per discussion in [issue #5](https://github.com/vim-pandoc/vim-markdownfootnotes/issues/5), it is planned to rebase the master branch of this repository to address this issue. This will unfortunately mean all forks and clones will need to be likewise rebased on the updated repository. This will not be done until at least 2019-04-14.
+_April 16th, 2019_
+
+This repository had (for its entire lifetime, inherited from the two commits in [VimFootnotes](https://github.com/vim-scripts/VimFootnotes)) an issue with malformed commits. If your git config had integrity checking turned on, it would only have been clonable with `git clone --config transfer.fsckobjects=false --config receive.fsckobjects=false --config fetch.fsckobjects=false <url>`. Per discussion in [issue #5](https://github.com/vim-pandoc/vim-markdownfootnotes/issues/5), the master branch of this repository was rebased to address this issue. This unfortunately means all forks and clones will need to be likewise rebased on the updated repository.
+
+If you have a clone with no changes, one way to fix this is to blow it away and clone again. If you have local changes you'd like to keep, first fetch using `git fetch --all` then rebase using `git rebase origin/master` (replace origin with the upstream name if you have changed it).
 
 ----
 
