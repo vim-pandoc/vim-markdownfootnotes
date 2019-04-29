@@ -1,8 +1,7 @@
-markdown-footnotes, add footnotes in markdown *markdown-footnotes* *footnotes*
+*markdownfootnotes.txt*	Plugin to ease creation of *markdown-footnotes*
 
-===========================================================================
-0. Introduction ~
-                                          *markdown-footnotes-intro*
+
+INTRODUCTION                                         *markdownfootnotes-intro*
 
 To insert a footnote, type `<Leader>f`. A footnote mark will be inserted
 after the cursor. A matching footnote mark will be inserted at the end
@@ -10,9 +9,8 @@ of the file. A new buffer will open in a split window at the bottom of
 your screen, ready to edit the new footnote. When you are done, type
 `<Leader>r` to close the split and return to the main text.
 
-===========================================================================
-1. Commands ~
-                                    *markdown-footnotes-commands*
+
+COMMANDS                                           *markdownfootnotes-commands*
 
 `AddVimFootnote`
  :  inserts footnotemark at cursor location, inserts footnotemark on new
@@ -42,22 +40,20 @@ footnote type was not `arabic`, the new type will be `arabic`; if it was
 arabic, the new type will be `alpha`. If the new type is the same as the
 previous type, then the counter will not be restarted.
 
-
 `FootnoteRestore`
   : Restore previous footnote type and counter.
-<
-===========================================================================
-2. Config ~
-                                        *markdown-footnotes-config*
+
+
+CONFIG                                               *markdownfootnotes-config*
 
 By default, footnote ids are arabic numerals. You can change this by
 setting `b:vimfootnotetype` in ~/.vim/ftplugin/markdown.vim:
 
-+	`arabic`: 1, 2, 3...
-+	`alpha`:  a, b, c, aa, bb..., zz, a...
++   `arabic`: 1, 2, 3...
++   `alpha`:  a, b, c, aa, bb..., zz, a...
 +   `Alpha`:  A, B, C, AA, BB..., ZZ, A...
 +   `roman`:  i, ii, iii... (displayed properly up to 89)
 +   `Roman`:  I, II, III...
 +   `star`:   \*, \*\*, \*\*\*...
 
-vim:tw=78:ts=2:sts=2:sw=2:ft=help:norl
+vim:tw=78:ts=8:noet:ft=help:fdm=marker
