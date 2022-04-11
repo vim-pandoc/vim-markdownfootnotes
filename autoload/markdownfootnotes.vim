@@ -154,6 +154,6 @@ function! markdownfootnotes#VimFootnotes(appendcmd)
     exe "normal ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
     :below 4split
     normal G
-    exe "normal o".cr."[^".g:vimfootnotemark."]: "
+    exe "normal o\<cr>[^".g:vimfootnotemark."]: "
     startinsert!
 endfunction
