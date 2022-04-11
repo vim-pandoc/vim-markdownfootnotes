@@ -138,10 +138,6 @@ function! markdownfootnotes#VimFootnotes(appendcmd)
         " count subsequent matches
         while search(l:pattern, l:flags) != 0
             let l:temp += 1
-            if l:temp > 50
-                redraw | echohl ErrorMsg | echo "Trouble in paradise: the while loop did not work"
-                break
-            endif
         endwhile
         let g:vimfootnotenumber = l:temp + 1
         " Return to position
