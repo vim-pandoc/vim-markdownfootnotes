@@ -1,9 +1,9 @@
-function! markdownfootnotes#VimFootnoteNumber(newnumber)
+function! markdownfootnotes#VimFootnoteNumber(newnumber) abort
 	let g:oldvimfootnotenumber = g:vimfootnotenumber
 	let g:vimfootnotenumber = a:newnumber - 1
 endfunction
 
-function! markdownfootnotes#VimFootnoteNumberRestore()
+function! markdownfootnotes#VimFootnoteNumberRestore() abort
 	if exists(g:oldvimfootnotenumber)
 		let g:vimfootnotenumber = g:oldvimfootnotenumber
 	else
@@ -11,7 +11,7 @@ function! markdownfootnotes#VimFootnoteNumberRestore()
 	endif
 endfunction
 
-function! markdownfootnotes#VimFootnoteMeta(...)
+function! markdownfootnotes#VimFootnoteMeta(...) abort
 	let g:oldvimfootnotetype = g:vimfootnotetype
 	let g:oldvimfootnotenumber = g:vimfootnotenumber
 	if a:0 == "0"
@@ -31,7 +31,7 @@ function! markdownfootnotes#VimFootnoteMeta(...)
 	let g:vimfootnotenumber = 0
 endfunction
 
-function! markdownfootnotes#VimFootnoteRestore()
+function! markdownfootnotes#VimFootnoteRestore() abort
 	if exists("g:oldvimfootnotenumber")
 		let oldvimfootnotetype2 = g:vimfootnotetype
 		let oldvimfootnotenumber2 = g:vimfootnotenumber
@@ -45,7 +45,7 @@ function! markdownfootnotes#VimFootnoteRestore()
 	endif
 endfunction
 
-function! markdownfootnotes#VimFootnoteType(footnumber)
+function! markdownfootnotes#VimFootnoteType(footnumber) abort
 	if (g:vimfootnotetype =~ "alpha\\|Alpha")
 		if (g:vimfootnotetype == "alpha")
 			let upper = "0"
@@ -124,7 +124,7 @@ function! markdownfootnotes#VimFootnoteType(footnumber)
 	return ftnumber
 endfunction
 
-function! markdownfootnotes#VimFootnotes(appendcmd)
+function! markdownfootnotes#VimFootnotes(appendcmd) abort
     " save current position
     let s:cur_pos =  getpos(".")
     " Define search pattern for footnote definitions
