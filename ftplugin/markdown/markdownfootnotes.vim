@@ -86,21 +86,21 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-if exists("b:loaded_footnote_vim") | finish | endif
+if exists('b:loaded_footnote_vim') | finish | endif
 let b:loaded_footnote_vim = 1
 
 let s:cpo_save = &cpo
 set cpo&vim
 
-if !exists("g:vimfootnotetype")
-	let g:vimfootnotetype = "arabic"
+if !exists('g:vimfootnotetype')
+	let g:vimfootnotetype = 'arabic'
 endif
 
-if !exists("g:vimfootnotenumber")
+if !exists('g:vimfootnotenumber')
 	let g:vimfootnotenumber = 0
 endif
 
-if !exists("g:vimfootnotelinebreak")
+if !exists('g:vimfootnotelinebreak')
 	let g:vimfootnotelinebreak = 1
 endif
 
@@ -108,7 +108,7 @@ endif
 if !hasmapto('<Plug>AddVimFootnote', 'i') && mapcheck('<Leader>f', 'i') is# ''
 	imap <buffer> <Leader>f <Plug>AddVimFootnote
 endif
-if !hasmapto('<Plug>AddVimFootnote', 'n') && mapcheck('<Leader>f', 'n') is# ""
+if !hasmapto('<Plug>AddVimFootnote', 'n') && mapcheck('<Leader>f', 'n') is# ''
     nmap <buffer> <Leader>f <Plug>AddVimFootnote
 endif
 

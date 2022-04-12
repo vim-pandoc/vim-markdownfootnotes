@@ -14,15 +14,15 @@ endfunction
 function! markdownfootnotes#VimFootnoteMeta(...) abort
 	let g:oldvimfootnotetype = g:vimfootnotetype
 	let g:oldvimfootnotenumber = g:vimfootnotenumber
-	if a:0 ==# "0"
-		if (g:vimfootnotetype ==? "arabic")
-			let g:vimfootnotetype = "alpha"
+	if a:0 ==# '0'
+		if (g:vimfootnotetype ==? 'arabic')
+			let g:vimfootnotetype = 'alpha'
 		else
-			let g:vimfootnotetype = "arabic"
+			let g:vimfootnotetype = 'arabic'
 		endif
 	else
 		if (a:1 == g:vimfootnotetype)
-			echomsg "You have chosen the same footnote type! Command won't affect."
+			echomsg 'You have chosen the same footnote type! Command won’t affect.'
 			return 0
 		else
 			let g:vimfootnotetype = a:1
@@ -32,7 +32,7 @@ function! markdownfootnotes#VimFootnoteMeta(...) abort
 endfunction
 
 function! markdownfootnotes#VimFootnoteRestore() abort
-	if exists("g:oldvimfootnotenumber")
+	if exists('g:oldvimfootnotenumber')
 		let oldvimfootnotetype2 = g:vimfootnotetype
 		let oldvimfootnotenumber2 = g:vimfootnotenumber
 		let g:vimfootnotetype = g:oldvimfootnotetype
@@ -46,11 +46,11 @@ function! markdownfootnotes#VimFootnoteRestore() abort
 endfunction
 
 function! markdownfootnotes#VimFootnoteType(footnumber) abort
-	if (g:vimfootnotetype =~? "alpha")
-		if (g:vimfootnotetype ==# "alpha")
-			let upper = "0"
+	if (g:vimfootnotetype =~? 'alpha')
+		if (g:vimfootnotetype ==# 'alpha')
+			let upper = 0
 		else
-			let upper = "-32"
+			let upper = -32
 		endif
 		if (a:footnumber <= 26)
 			let ftnumber = nr2char(a:footnumber+96+upper)
@@ -60,23 +60,23 @@ function! markdownfootnotes#VimFootnoteType(footnumber) abort
 			let g:vimfootnotenumber = 1
 			let ftnumber = nr2char(97+upper)
 		endif
-	elseif (g:vimfootnotetype ==? "star")
+	elseif (g:vimfootnotetype ==? 'star')
 		let starnumber = 1
-		let ftnumber = ""
+		let ftnumber = ''
 		while (starnumber <= a:footnumber)
 			let ftnumber = ftnumber . '*'
 			let starnumber = starnumber + 1
 		endwhile
-	elseif (g:vimfootnotetype =~? "roman")
-		let ftnumber = ""
-		let oneroman = ""
+	elseif (g:vimfootnotetype =~? 'roman')
+		let ftnumber = ''
+		let oneroman = ''
 		let counter = g:vimfootnotenumber
 		if (counter >= 50)
-			let ftnumber = "l"
+			let ftnumber = 'l'
 			let counter = counter - 50
 		endif
 		if (counter > 39 && counter < 50)
-			let ftnumber = "xl"
+			let ftnumber = 'xl'
 			let counter = counter - 40
 		endif
 		if (counter > 10)
@@ -89,7 +89,7 @@ function! markdownfootnotes#VimFootnoteType(footnumber) abort
 			endwhile
 		elseif (counter == 10)
 			let ftnumber = ftnumber.'x'
-			let tenmodulo = ""
+			let tenmodulo = ''
 		else
 			let tenmodulo = counter
 		endif
@@ -115,8 +115,8 @@ function! markdownfootnotes#VimFootnoteType(footnumber) abort
 			let oneroman = ''
 		endif
 		let ftnumber = ftnumber . oneroman
-		if (g:vimfootnotetype ==# "Roman")
-			let ftnumber = substitute(ftnumber, ".*", "\\U\\0", "g")
+		if (g:vimfootnotetype ==# 'Roman')
+			let ftnumber = substitute(ftnumber, '.*', "\\U\\0", 'g')
 		endif
 	else
 		let ftnumber = a:footnumber
@@ -126,7 +126,7 @@ endfunction
 
 function! markdownfootnotes#VimFootnotes(appendcmd) abort
     " save current position
-    let s:cur_pos =  getpos(".")
+    let s:cur_pos =  getpos('.')
     " Define search pattern for footnote definitions
     let l:pattern = '\v^\[\^(.+)\]:'
     let l:flags = 'eW'
@@ -141,19 +141,19 @@ function! markdownfootnotes#VimFootnotes(appendcmd) abort
         endwhile
         let g:vimfootnotenumber = l:temp + 1
         " Return to position
-        call setpos(".", s:cur_pos)
+        call setpos('.', s:cur_pos)
         let g:vimfootnotemark = markdownfootnotes#VimFootnoteType(g:vimfootnotenumber)
     else
         let g:vimfootnotenumber = 1
         " Return to position
-        call setpos(".", s:cur_pos)
+        call setpos('.', s:cur_pos)
         let g:vimfootnotemark = markdownfootnotes#VimFootnoteType(g:vimfootnotenumber)
     endif
-    let cr = g:vimfootnotelinebreak ? "\<cr>" : ""
+    let cr = g:vimfootnotelinebreak ? "\<cr>" : ''
 
-    exe "normal! ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
+    exe 'normal! '.a:appendcmd.'[^'.g:vimfootnotemark."]\<esc>"
     :below 4split
     normal! G
-    exe "normal! o\<cr>[^".g:vimfootnotemark."]: "
+    exe "normal! o\<cr>[^".g:vimfootnotemark.']: '
     startinsert!
 endfunction
