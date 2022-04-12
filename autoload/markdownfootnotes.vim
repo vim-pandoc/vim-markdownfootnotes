@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 function! markdownfootnotes#VimFootnoteNumber(newnumber) abort
 	let g:oldvimfootnotenumber = g:vimfootnotenumber
 	let g:vimfootnotenumber = a:newnumber - 1
