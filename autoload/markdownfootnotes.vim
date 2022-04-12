@@ -138,10 +138,6 @@ function! markdownfootnotes#VimFootnotes(appendcmd)
         " count subsequent matches
         while search(l:pattern, l:flags) != 0
             let l:temp += 1
-            if l:temp > 50
-                redraw | echohl ErrorMsg | echo "Trouble in paradise: the while loop did not work"
-                break
-            endif
         endwhile
         let g:vimfootnotenumber = l:temp + 1
         " Return to position
@@ -155,9 +151,9 @@ function! markdownfootnotes#VimFootnotes(appendcmd)
     endif
     let cr = g:vimfootnotelinebreak ? "\<cr>" : ""
 
-    exe "normal ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
+    exe "normal! ".a:appendcmd."[^".g:vimfootnotemark."]\<esc>"
     :below 4split
     normal G
-    exe "normal o".cr."[^".g:vimfootnotemark."]: "
+    exe "normal! o\<cr>[^".g:vimfootnotemark."]: "
     startinsert!
 endfunction
