@@ -8,11 +8,11 @@ with extended markdown.
 The new script inserts footnotes in the widely supported extended markdown
 syntax:
 
-~~~
+```markdown
 Here is some text.[^1]
 
 [^1]: Here is a note.
-~~~
+```
 
 The footnote number gets determined by an automatic counter whenever a new
 footnote gets inserted. The counter works with the default arabic numerals
@@ -22,10 +22,10 @@ Nick Coleman][3], adjusted slightly to work with Markdown footnotes.
 
 The script defines two mappings,
 
-~~~
-<Leader>f    Insert new footnote
-<Leader>r    Return from footnote
-~~~
+```viml
+<Leader>f " Insert a new footnote
+<Leader>r " Return from footnote
+```
 
 To insert a footnote, type `<Leader>f`. A footnote mark will be inserted
 after the cursor. A matching footnote mark will be inserted at the end
@@ -37,9 +37,26 @@ your screen, ready to edit the new footnote. When you are done, type
 
 ## Installation
 
-Drop `markdownfootnotes.vim` in your plugin directory.
+Extract to your plugins directory or use any common vim plugin manager.
 
-Or use [Pathogen][6].
+```viml
+" vim-plug
+Plug 'vim-pandoc/vim-markdownfootnotes'
+
+" vundle
+Plugin 'vim-pandoc/vim-markdownfootnotes'
+```
+
+```bash
+# pathogen
+$ cd ~/.vim/bundle
+$ git clone https://github.com/vim-pandoc/vim-markdownfootnotes.git
+```
+
+```lua
+-- packer
+use("vim-pandoc/vim-markdownfootnotes")
+```
 
 ## Settings
 
@@ -93,4 +110,3 @@ previous type, then the counter will not be restarted.
 [2]: http://www.vim.org/scripts/script.php?script_id=431
 [3]: http://www.nickcoleman.org/blog/index.cgi?post=footnotevim%21201102211201%21programming
 [5]: https://raw.github.com/vim-pandoc/vim-markdownfootnotes/master/assets/footnotes.png
-[6]: https://github.com/tpope/vim-pathogen
